@@ -49,13 +49,15 @@ void loop() {
     blinkSequence();
   }
 
-  if(gameState == "waiting" and timer > 0){
-    buttonCheck();
-    timer -= 1;
-    delay(1);
-  } if(gameState == "waiting" and timer <= 0){
-    gameState = "blinking";
-    timer = 0;
+  if(gameState == "waiting"){
+    if(timer > 0){
+      buttonCheck();
+      timer -= 1;
+      delay(1);
+    } else {
+      gameState = "blinking";
+      timer = 0;
+    }
   }
 
   if(gameState == "guessing"){
